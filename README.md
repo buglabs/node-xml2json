@@ -16,10 +16,11 @@ npm install xml2json
 var parser = require('xml2json');
 
 var xml = "<foo>bar</foo>";
-var json = parser.toJson(xml); //returns an string by default
+var json = parser.toJson(xml); //returns an string containing the json structure by default
 console.log(json);
 ```
-if you want to get the Javascript object then you might want to invoke parser.toJson(xml, true);
+* if you want to get the Javascript object then you might want to invoke parser.toJson(xml, {object: true});
+* if you want a reversible json to xml then you should use parser.toJson(xml, {reversible: true});
 
 
 ## License
