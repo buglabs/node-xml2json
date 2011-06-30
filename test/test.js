@@ -28,6 +28,7 @@ fs.readdir(fixturesPath, function(err, files) {
             }
 
             assert.deepEqual(result, expected, jsonFile + ' and ' + file + ' are different');
+            console.log('All tests passed!');
         }
     }
 });
