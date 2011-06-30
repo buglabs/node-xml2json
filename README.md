@@ -19,7 +19,7 @@ var xml = "<foo>bar</foo>";
 var json = parser.toJson(xml); //returns an string by default
 console.log(json);
 ```
-if you want to get the Javascript object then you might like to invoke parser.toJson(xml, true);
+if you want to get the Javascript object then you might want to invoke parser.toJson(xml, true);
 
 
 ## License
