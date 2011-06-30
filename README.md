@@ -4,7 +4,7 @@
 ```javascript
 var parser = require('xml2json');
 
-var xml = "<foo>bar</foo>"
+var xml = "<foo>bar</foo>";
 var json = parser.toJson(xml);
 console.log(json);
 ```
