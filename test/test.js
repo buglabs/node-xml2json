@@ -15,6 +15,8 @@ fs.readdir(fixturesPath, function(err, files) {
 
             var data = fs.readFileSync(fixturesPath + '/' + file);
             var result = parser.toJson(data);
+            var  data2 =  fs.readFileSync(fixturesPath + '/' + file);
+            result = parser.toJson(data2);
 
             var jsonFile = basename + '.json'
             var expected = fs.readFileSync(fixturesPath + '/' + jsonFile) + '';
