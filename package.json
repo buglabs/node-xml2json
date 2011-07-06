@@ -5,10 +5,7 @@
     "description" : "Converts xml to json using node-expat.",
     "repository": "git://github.com/buglabs/node-xml2json.git", 
     "main": "index", 
-    "maintainers":[ {
-         "name": "Camilo Aguilar",
-         "email": "camilo@buglabs.net"} 
-    ],
+    "contributors":[ {"name": "Camilo Aguilar", "email": "camilo@buglabs.net"}],
     "dependencies": {
        "node-expat": "1.3.2" 
     }
