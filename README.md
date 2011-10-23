@@ -9,7 +9,7 @@ It does not parse the following elements:
 * Comments
 
 ## Installation 
-npm install xml2json
+`npm install xml2json`
 
 ## Usage 
 ```javascript
