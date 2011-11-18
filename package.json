@@ -1,5 +1,5 @@
 {   "name" : "xml2json",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "author": "Andrew Turley",
     "email": "aturley@buglabs.net",
     "description" : "Converts xml to json and viceverza, using node-expat.",
@@ -7,7 +7,7 @@
     "main": "index", 
     "contributors":[ {"name": "Camilo Aguilar", "email": "camilo@buglabs.net"}],
     "dependencies": {
-       "node-expat": "1.4.0" 
+       "node-expat": "1.4.1"
     }
 }
 
