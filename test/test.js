@@ -1,9 +1,9 @@
 var fs = require('fs');
 var path = require('path');
-var parser = require('../lib');
+var parser = require(__dirname + '/../lib');
 var assert = require('assert');
 
-var fixturesPath = './fixtures';
+var fixturesPath = __dirname + '/fixtures';
 
 fs.readdir(fixturesPath, function(err, files) {
     for (var i in files) {
