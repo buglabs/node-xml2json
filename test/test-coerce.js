@@ -2,7 +2,7 @@ var fs = require('fs');
 var parser = require('../lib');
 var assert = require('assert');
 
-var file = __dirname + '/fixtures/case.xml';
+var file = __dirname + '/fixtures/coerce.xml';
 
 var data = fs.readFileSync(file);
 
