@@ -1,13 +1,17 @@
 {   "name" : "xml2json",
-    "version": "0.2.4",
+    "version": "0.3.0",
     "author": "Andrew Turley",
     "email": "aturley@buglabs.net",
     "description" : "Converts xml to json and viceverza, using node-expat.",
     "repository": "git://github.com/buglabs/node-xml2json.git", 
     "main": "index", 
     "contributors":[ {"name": "Camilo Aguilar", "email": "camilo@buglabs.net"}],
+    "devDependencies": {
+       "mocha": "1.0.3",
+       "should": "0.6.3"
+    },
     "dependencies": {
-       "node-expat": "1.4.1"
+       "node-expat": "1.5.0"
     }
 }
 
