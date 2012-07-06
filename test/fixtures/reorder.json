@@ -1,0 +1,7 @@
+{
+	"parent":
+	{
+		"child": { "child_property": "foo" },
+		"parent_property": "bar" 
+	}
+}
