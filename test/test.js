@@ -17,7 +17,11 @@ fs.readdir(fixturesPath, function(err, files) {
             var result = parser.toJson(data, {reversible: true});
 
             var  data2 =  fs.readFileSync(fixturesPath + '/' + file);
-            result = parser.toJson(data2);
+            if (file.indexOf('spacetext') >= 0) {
+                result = parser.toJson(data2, {space: true});
+            } else {
+                result = parser.toJson(data2);
+            }
 
             var jsonFile = basename + '.json';
             var expected = fs.readFileSync(fixturesPath + '/' + jsonFile) + '';
