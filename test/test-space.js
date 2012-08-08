@@ -5,8 +5,10 @@ var assert = require('assert');
 
 var xml = fs.readFileSync(__dirname + '/fixtures/spacetext.xml');
 var json = parser.toJson(xml, {object: true, space: true});
-console.log('%j', json);
+console.log('xml => json: \n%j', json);
 
+console.log('---------------------\njson => xml: \n%j\n', 
+  parser.toXml(fs.readFileSync(__dirname + '/fixtures/spacetext.json')));
 function eql(a, b) {
   for (var k in a) {
     assert.deepEqual(a[k], b[k], JSON.stringify(a) + ' should equal ' + JSON.stringify(b));
