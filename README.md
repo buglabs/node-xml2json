@@ -21,7 +21,7 @@ console.log(json);
 ```
 * if you want to get the Javascript object then you might want to invoke parser.toJson(xml, {object: true});
 * if you want a reversible json to xml then you should use parser.toJson(xml, {reversible: true});
-
+* if you want to keep xml space text then you should use `options.space`, `parser.toJson(xml, {space: true})`;
 
 ## License
 (The MIT License)

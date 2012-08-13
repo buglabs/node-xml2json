@@ -1,7 +1,1 @@
-{
-	"parent":
-	{
-		"child": { "child_property": "foo" },
-		"parent_property": "bar" 
-	}
-}
+{"parent":{"parent_property":"bar","child":{"child_property":"foo"}}}
