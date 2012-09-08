@@ -8,16 +8,43 @@ It does not parse the following elements:
 * Entity declarations
 * Comments
 
-## Installation 
-`npm install xml2json`
+## Installation
+```
+$ npm install xml2json
+```
 
 ## Usage 
-```javascript
+```
 var parser = require('xml2json');
 
 var xml = "<foo>bar</foo>";
-var json = parser.toJson(xml); //returns an string containing the json structure by default
+var json = parser.toJson(xml); //returns a string containing the JSON structure by default
 console.log(json);
+```
+### Options
+
+* **object:** Returns a Javascript object instead of a JSON string
+* **reversible:** Makes the JSON reversible to XML (*)
+* **coerce:** Makes type coercion
+* **sanitize:** Sanitizes the following characters:
+
+| Character | Escaped |
+| --------- | ------- |
+|    `<`    |  `&lt;` |
+|    `>`    |  `&gt;` |
+|    `(`    |  `&#40;`|
+|           |         |
+|           |         |
+
+* **trim:**
+
+```
+options = {
+        object: false,
+        reversible: false,
+        coerce: true,
+        sanitize: true,
+        trim: true };
 ```
 * if you want to get the Javascript object then you might want to invoke parser.toJson(xml, {object: true});
 * if you want a reversible json to xml then you should use parser.toJson(xml, {reversible: true});
@@ -26,7 +53,7 @@ console.log(json);
 ## License
 (The MIT License)
 
-Copyright 2011 BugLabs. All rights reserved.
+Copyright 2012 BugLabs. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
