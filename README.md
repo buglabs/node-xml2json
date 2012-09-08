@@ -14,7 +14,7 @@ $ npm install xml2json
 ```
 
 ## Usage 
-```
+```javascript
 var parser = require('xml2json');
 
 var xml = "<foo>bar</foo>";
@@ -23,16 +23,16 @@ console.log(json);
 ```
 ## API
 
-```
+```javascript
 parser.toJson(xml, options);
 ```
-```
+```javascript
 parser.toXml(json, options);
 ```
 
 ### Options object
 
-```
+```javascript
 var options = {
         object: false,
         reversible: false,
@@ -47,7 +47,7 @@ var options = {
 * **trim:** Removes leading and trailing whitespaces as well as line terminators in element values.
 * **sanitize:** Sanitizes the following characters:
 
-```
+```javascript
 var chars =  {  '<': '&lt;',
                 '>': '&gt;',
                 '(': '&#40;',
