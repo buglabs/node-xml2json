@@ -2,7 +2,7 @@
 
 It does not parse the following elements: 
 
-* CDATA sections
+* CDATA sections (*)
 * Processing instructions
 * XML declarations
 * Entity declarations
@@ -21,34 +21,47 @@ var xml = "<foo>bar</foo>";
 var json = parser.toJson(xml); //returns a string containing the JSON structure by default
 console.log(json);
 ```
-### Options
-
-* **object:** Returns a Javascript object instead of a JSON string
-* **reversible:** Makes the JSON reversible to XML (*)
-* **coerce:** Makes type coercion
-* **sanitize:** Sanitizes the following characters:
-
-| Character | Escaped |
-| --------- | ------- |
-|    `<`    |  `&lt;` |
-|    `>`    |  `&gt;` |
-|    `(`    |  `&#40;`|
-|           |         |
-|           |         |
-
-* **trim:**
+## API
 
 ```
-options = {
+parser.toJson(xml, options);
+```
+```
+parser.toXml(json, options);
+```
+
+### Options object
+
+```
+var options = {
         object: false,
         reversible: false,
         coerce: true,
         sanitize: true,
         trim: true };
 ```
-* if you want to get the Javascript object then you might want to invoke parser.toJson(xml, {object: true});
-* if you want a reversible json to xml then you should use parser.toJson(xml, {reversible: true});
-* if you want to keep xml space text then you should use `options.space`, `parser.toJson(xml, {space: true})`;
+
+* **object:** Returns a Javascript object instead of a JSON string
+* **reversible:** Makes the JSON reversible to XML (*)
+* **coerce:** Makes type coercion. i.e.: numbers and booleans present in attributes and element values are converted from string to its correspondent data types.
+* **trim:** Removes leading and trailing whitespaces as well as line terminators in element values.
+* **sanitize:** Sanitizes the following characters:
+
+```
+var chars =  {  '<': '&lt;',
+                '>': '&gt;',
+                '(': '&#40;',
+                ')': '&#41;',
+                '#': '&#35;',
+                '&': '&amp;',
+                '"': '&quot;',
+                "'": '&apos;' };
+```
+
+
+
+
+(*) xml2json tranforms CDATA content to JSON, but it doesn't generate a reversible structure.
 
 ## License
 (The MIT License)
