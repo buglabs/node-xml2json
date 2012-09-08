@@ -32,13 +32,15 @@ parser.toXml(json, options);
 
 ### Options object
 
+Default values:
 ```javascript
 var options = {
-        object: false,
-        reversible: false,
-        coerce: true,
-        sanitize: true,
-        trim: true };
+    object: false,
+    reversible: false,
+    coerce: true,
+    sanitize: true,
+    trim: true 
+};
 ```
 
 * **object:** Returns a Javascript object instead of a JSON string
@@ -48,14 +50,16 @@ var options = {
 * **sanitize:** Sanitizes the following characters:
 
 ```javascript
-var chars =  {  '<': '&lt;',
-                '>': '&gt;',
-                '(': '&#40;',
-                ')': '&#41;',
-                '#': '&#35;',
-                '&': '&amp;',
-                '"': '&quot;',
-                "'": '&apos;' };
+var chars =  {  
+    '<': '&lt;',
+    '>': '&gt;',
+    '(': '&#40;',
+    ')': '&#41;',
+    '#': '&#35;',
+    '&': '&amp;',
+    '"': '&quot;',
+    "'": '&apos;'
+};
 ```
 
 
