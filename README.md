@@ -2,26 +2,66 @@
 
 It does not parse the following elements: 
 
-* CDATA sections
+* CDATA sections (*)
 * Processing instructions
 * XML declarations
 * Entity declarations
 * Comments
 
-## Installation 
-`npm install xml2json`
+## Installation
+```
+$ npm install xml2json
+```
 
 ## Usage 
 ```javascript
 var parser = require('xml2json');
 
 var xml = "<foo>bar</foo>";
-var json = parser.toJson(xml); //returns an string containing the json structure by default
+var json = parser.toJson(xml); //returns a string containing the JSON structure by default
 console.log(json);
 ```
-* if you want to get the Javascript object then you might want to invoke parser.toJson(xml, {object: true});
-* if you want a reversible json to xml then you should use parser.toJson(xml, {reversible: true});
-* if you want to keep xml space text then you should use `options.space`, `parser.toJson(xml, {space: true})`;
+## API
+
+```javascript
+parser.toJson(xml, options);
+```
+```javascript
+parser.toXml(json, options);
+```
+
+### Options object
+
+```javascript
+var options = {
+        object: false,
+        reversible: false,
+        coerce: true,
+        sanitize: true,
+        trim: true };
+```
+
+* **object:** Returns a Javascript object instead of a JSON string
+* **reversible:** Makes the JSON reversible to XML (*)
+* **coerce:** Makes type coercion. i.e.: numbers and booleans present in attributes and element values are converted from string to its correspondent data types.
+* **trim:** Removes leading and trailing whitespaces as well as line terminators in element values.
+* **sanitize:** Sanitizes the following characters:
+
+```javascript
+var chars =  {  '<': '&lt;',
+                '>': '&gt;',
+                '(': '&#40;',
+                ')': '&#41;',
+                '#': '&#35;',
+                '&': '&amp;',
+                '"': '&quot;',
+                "'": '&apos;' };
+```
+
+
+
+
+(*) xml2json tranforms CDATA content to JSON, but it doesn't generate a reversible structure.
 
 ## License
 (The MIT License)
