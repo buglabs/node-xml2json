@@ -18,9 +18,15 @@ fs.readdir(fixturesPath, function(err, files) {
 
             var  data2 =  fs.readFileSync(fixturesPath + '/' + file);
             if (file.indexOf('spacetext') >= 0) {
-                result = parser.toJson(data2, {space: true});
+                result = parser.toJson(data2, {trim: false, coerce: false});
+            } else if (file.indexOf('coerce') >= 0) {
+                result = parser.toJson(data2, {coerce: false});
+            } else if (file.indexOf('domain') >= 0) {
+                result = parser.toJson(data2, {coerce: false});
+            } else if (file.indexOf('large') >= 0) {
+                result = parser.toJson(data2, {coerce: false, trim: true, sanitize: false});
             } else {
-                result = parser.toJson(data2);
+                result = parser.toJson(data2, {trim: false});
             }
 
             var jsonFile = basename + '.json';
@@ -29,6 +35,9 @@ fs.readdir(fixturesPath, function(err, files) {
             if (expected) {
                 expected = expected.trim();
             }
+            /*console.log(result);
+            console.log('============ Expected ===============');
+            console.log(expected)*/
             assert.deepEqual(result, expected, jsonFile + ' and ' + file + ' are different');
             console.log('[xml2json: ' + file + '->' + jsonFile + '] passed!');
         } else if( ext == '.json') {
