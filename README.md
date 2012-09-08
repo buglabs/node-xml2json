@@ -47,7 +47,7 @@ var options = {
 * **reversible:** Makes the JSON reversible to XML (*)
 * **coerce:** Makes type coercion. i.e.: numbers and booleans present in attributes and element values are converted from string to its correspondent data types.
 * **trim:** Removes leading and trailing whitespaces as well as line terminators in element values.
-* **sanitize:** Sanitizes the following characters:
+* **sanitize:** Sanitizes the following characters present in element values:
 
 ```javascript
 var chars =  {  
