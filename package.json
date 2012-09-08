@@ -5,7 +5,9 @@
     "description" : "Converts xml to json and viceverza, using node-expat.",
     "repository": "git://github.com/buglabs/node-xml2json.git", 
     "main": "index", 
-    "contributors":[ {"name": "Camilo Aguilar", "email": "camilo@buglabs.net"}],
+    "contributors":[ 
+        {"name": "Camilo Aguilar", "email": "camilo@buglabs.net"}
+    ],
     "dependencies": {
        "node-expat": ">=1.4.1 <2.0.0"
     }
