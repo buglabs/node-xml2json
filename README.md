@@ -1,6 +1,6 @@
 # Simple SAX-based XML2JSON Parser.
 
-It does not parse the following elements: 
+It does not parse the following elements:
 
 * CDATA sections (*)
 * Processing instructions
@@ -13,7 +13,7 @@ It does not parse the following elements:
 $ npm install xml2json
 ```
 
-## Usage 
+## Usage
 ```javascript
 var parser = require('xml2json');
 
@@ -39,7 +39,8 @@ var options = {
     reversible: false,
     coerce: true,
     sanitize: true,
-    trim: true 
+    trim: true,
+    arrayNotation: false
 };
 ```
 
@@ -47,10 +48,11 @@ var options = {
 * **reversible:** Makes the JSON reversible to XML (*)
 * **coerce:** Makes type coercion. i.e.: numbers and booleans present in attributes and element values are converted from string to its correspondent data types.
 * **trim:** Removes leading and trailing whitespaces as well as line terminators in element values.
+* **arrayNotation:** XML child nodes are always treated as arrays
 * **sanitize:** Sanitizes the following characters present in element values:
 
 ```javascript
-var chars =  {  
+var chars =  {
     '<': '&lt;',
     '>': '&gt;',
     '(': '&#40;',

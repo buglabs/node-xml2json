@@ -25,6 +25,8 @@ fs.readdir(fixturesPath, function(err, files) {
                 result = parser.toJson(data2, {coerce: false});
             } else if (file.indexOf('large') >= 0) {
                 result = parser.toJson(data2, {coerce: false, trim: true, sanitize: false});
+            } else if (file.indexOf('array-notation') >= 0) {
+                result = parser.toJson(data2, {arrayNotation: true});
             } else {
                 result = parser.toJson(data2, {trim: false});
             }
@@ -45,10 +47,10 @@ fs.readdir(fixturesPath, function(err, files) {
             if (basename.match('reversible')) {
                 var data = fs.readFileSync(fixturesPath + '/' + file);
                 var result = parser.toXml(data);
-                
+
                 var xmlFile = basename.split('-')[0] + '.xml';
                 var expected = fs.readFileSync(fixturesPath + '/' + xmlFile) + '';
-               
+
                 if (expected) {
                     expected = expected.trim();
                 }
