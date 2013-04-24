@@ -10,6 +10,9 @@
     ],
     "dependencies": {
        "node-expat": "2.0.0"
+    },
+    "bin": {
+        "xml2json": "bin/xml2json"
     }
 }
 
