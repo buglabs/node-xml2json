@@ -8,6 +8,9 @@ It does not parse the following elements:
 * Entity declarations
 * Comments
 
+This module uses node-expat which will require extra steps if you want to get it installed on Windows. Please
+refer to its documentation at http://node-xmpp.github.io/doc/nodeexpat.html#toc_6
+
 ## Installation
 ```
 $ npm install xml2json
@@ -72,7 +75,7 @@ var chars =  {
 ## License
 (The MIT License)
 
-Copyright 2012 BugLabs. All rights reserved.
+Copyright 2014 BugLabs. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
