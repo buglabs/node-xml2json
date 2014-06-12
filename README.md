@@ -1,4 +1,4 @@
-# Simple SAX-based XML2JSON Parser.
+# Simple XML2JSON Parser
 
 It does not parse the following elements:
 
