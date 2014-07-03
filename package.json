@@ -9,7 +9,7 @@
         {"name": "Camilo Aguilar", "email": "camilo.aguilar@gmail.com"}
     ],
     "dependencies": {
-       "node-expat": "2.1.4"
+       "node-expat": "^2.3.0"
     },
     "bin": {
         "xml2json": "bin/xml2json"
