@@ -31,7 +31,7 @@ console.log(json);
 parser.toJson(xml, options);
 ```
 ```javascript
-parser.toXml(json, options);
+parser.toXml(json);
 ```
 
 ### Options object
