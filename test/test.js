@@ -37,9 +37,9 @@ fs.readdir(fixturesPath, function(err, files) {
             if (expected) {
                 expected = expected.trim();
             }
-            /*console.log(result);
-            console.log('============ Expected ===============');
-            console.log(expected)*/
+            // console.log(result);
+            // console.log('============ Expected ===============');
+            // console.log(expected)
             assert.deepEqual(result, expected, jsonFile + ' and ' + file + ' are different');
             console.log('[xml2json: ' + file + '->' + jsonFile + '] passed!');
         } else if( ext == '.json') {
