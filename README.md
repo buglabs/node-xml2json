@@ -10,7 +10,7 @@ It does not parse the following elements:
 * Comments
 
 This module uses node-expat which will require extra steps if you want to get it installed on Windows. Please
-refer to its [documentation](http://node-xmpp.org/doc/expat.html#installing-on-windows?)
+refer to its [documentation](http://node-xmpp.org/doc/expat.html#installing-on-windows?).
 
 ## Installation
 ```
