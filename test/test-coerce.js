@@ -13,6 +13,9 @@ assert.strictEqual(result.itemRecord.value[0].longValue['$t'], 12345);
 assert.strictEqual(result.itemRecord.value[1].stringValue.number, false);
 assert.strictEqual(result.itemRecord.value[2].moneyValue.number, true);
 assert.strictEqual(result.itemRecord.value[2].moneyValue['$t'], 104.95);
+assert.strictEqual(result.itemRecord.value[2].moneyValue.text, 123.45);
+assert.strictEqual(result.itemRecord.value[8].text['$t'], 42.42);
+
 
 // Without coercion
 result = parser.toJson(data, {reversible: true, coerce: false, object: true});
@@ -20,3 +23,14 @@ assert.strictEqual(result.itemRecord.value[0].longValue['$t'], '12345');
 assert.strictEqual(result.itemRecord.value[1].stringValue.number, 'false');
 assert.strictEqual(result.itemRecord.value[2].moneyValue.number, 'true');
 assert.strictEqual(result.itemRecord.value[2].moneyValue['$t'], '104.95');
+assert.strictEqual(result.itemRecord.value[2].moneyValue.text, '123.45');
+assert.strictEqual(result.itemRecord.value[8].text['$t'], '42.42');
+
+// With coercion as an optional object
+var result = parser.toJson(data, {reversible: true, coerce: {text:String}, object: true});
+assert.strictEqual(result.itemRecord.value[0].longValue['$t'], 12345);
+assert.strictEqual(result.itemRecord.value[1].stringValue.number, false);
+assert.strictEqual(result.itemRecord.value[2].moneyValue.number, true);
+assert.strictEqual(result.itemRecord.value[2].moneyValue['$t'], 104.95);
+assert.strictEqual(result.itemRecord.value[2].moneyValue.text, '123.45');
+assert.strictEqual(result.itemRecord.value[8].text['$t'], '42.42');

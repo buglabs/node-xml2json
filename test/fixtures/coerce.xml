@@ -7,7 +7,7 @@
     </stringValue>
   </value>
   <value>
-    <moneyValue number='true' currencyId="USD">104.95
+    <moneyValue number='true' currencyId="USD" text="123.45">104.95
     </moneyValue>
   </value>
   <value>
@@ -26,5 +26,8 @@
   </value>
   <value>
     <stringValue>SmDZ8RlMIjDvlEW3KUibzj2Q</stringValue>
+  </value>
+  <value>
+    <text>42.42</text>
   </value>
 </itemRecord>

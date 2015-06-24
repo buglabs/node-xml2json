@@ -36,7 +36,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, { coerce: false });
         var json = internals.readFixture('coerce.json');
 
-        expect(result).to.deep.equal(json);
+        expect(result + '\n').to.deep.equal(json);
 
         done();
     });
@@ -47,7 +47,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, { coerce: false });
         var json = internals.readFixture('domain.json');
 
-        expect(result+'\n').to.deep.equal(json);
+        expect(result + '\n').to.deep.equal(json);
 
         done();
     });
@@ -58,7 +58,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, { coerce: false, trim: true, sanitize: false });
         var json = internals.readFixture('large.json');
 
-        expect(result+'\n').to.deep.equal(json);
+        expect(result + '\n').to.deep.equal(json);
 
         done();
     });
@@ -107,6 +107,7 @@ describe('xml2json', function () {
         done();
     });
 });
+
 
 describe('json2xml', function () {
 

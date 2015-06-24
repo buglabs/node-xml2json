@@ -50,7 +50,7 @@ var options = {
 
 * **object:** Returns a Javascript object instead of a JSON string
 * **reversible:** Makes the JSON reversible to XML (*)
-* **coerce:** Makes type coercion. i.e.: numbers and booleans present in attributes and element values are converted from string to its correspondent data types.
+* **coerce:** Makes type coercion. i.e.: numbers and booleans present in attributes and element values are converted from string to its correspondent data types. Coerce can be optionally defined as an object with specific methods of coercion based on attribute name or tag name, with fallback to default coercion.
 * **trim:** Removes leading and trailing whitespaces as well as line terminators in element values.
 * **arrayNotation:** XML child nodes are always treated as arrays
 * **sanitize:** Sanitizes the following characters present in element values:
