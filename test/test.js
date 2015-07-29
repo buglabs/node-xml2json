@@ -3,64 +3,129 @@ var path = require('path');
 var parser = require(__dirname + '/../lib');
 var assert = require('assert');
 
-var fixturesPath = __dirname + '/fixtures';
+var Code = require('code');
+var Lab = require('lab');
 
-fs.readdir(fixturesPath, function(err, files) {
-    for (var i in files) {
-        var file = files[i];
-        var ext = path.extname(file);
 
-        if (ext == '.xml') {
-            var basename = path.basename(file, '.xml');
+// Test shortcuts
 
-            var data = fs.readFileSync(fixturesPath + '/' + file);
-            var result = parser.toJson(data, {reversible: true});
+var lab = exports.lab = Lab.script();
+var expect = Code.expect;
+var describe = lab.describe;
+var it = lab.test;
 
-            var  data2 =  fs.readFileSync(fixturesPath + '/' + file);
-            if (file.indexOf('spacetext') >= 0) {
-                result = parser.toJson(data2, {trim: false, coerce: false});
-            } else if (file.indexOf('coerce') >= 0) {
-                result = parser.toJson(data2, {coerce: false});
-            } else if (file.indexOf('domain') >= 0) {
-                result = parser.toJson(data2, {coerce: false});
-            } else if (file.indexOf('large') >= 0) {
-                result = parser.toJson(data2, {coerce: false, trim: true, sanitize: false});
-            } else if (file.indexOf('array-notation') >= 0) {
-                result = parser.toJson(data2, {arrayNotation: true});
-            } else {
-                result = parser.toJson(data2, {trim: false});
-            }
+var internals = {};
 
-            var jsonFile = basename + '.json';
-            var expected = fs.readFileSync(fixturesPath + '/' + jsonFile) + '';
 
-            if (expected) {
-                expected = expected.trim();
-            }
-            // console.log('============ Got ===============');
-            // console.log(result);
-            // console.log('============ Expected ===============');
-            // console.log(expected)
-            // console.log('=====================================');
-            assert.deepEqual(result, expected, jsonFile + ' and ' + file + ' are different');
-            console.log('[xml2json: ' + file + '->' + jsonFile + '] passed!');
-        } else if( ext == '.json') {
-            var basename = path.basename(file, '.json');
-            if (basename.match('reversible')) {
-                var data = fs.readFileSync(fixturesPath + '/' + file);
-                var result = parser.toXml(data);
+describe('xml2json', function () {
 
-                var xmlFile = basename.split('-')[0] + '.xml';
-                var expected = fs.readFileSync(fixturesPath + '/' + xmlFile) + '';
+    it('converts with array-notation', function (done) {
 
-                if (expected) {
-                    expected = expected.trim();
-                }
-                //console.log(result + '<---');
-                assert.deepEqual(result, expected, xmlFile + ' and ' + file + ' are different');
-                console.log('[json2xml: ' + file + '->' + xmlFile + '] passed!');
-            }
-        }
-    }
+        var xml = internals.readFixture('array-notation.xml');
+        var result = parser.toJson(xml, { arrayNotation: true });
+        var json = internals.readFixture('array-notation.json');
+
+        expect(result).to.deep.equal(json);
+
+        done();
+    });
+
+    it('coerces', function (done) {
+
+        var xml = internals.readFixture('coerce.xml');
+        var result = parser.toJson(xml, { coerce: false });
+        var json = internals.readFixture('coerce.json');
+
+        expect(result + '\n').to.deep.equal(json);
+
+        done();
+    });
+
+    it('handles domain', function (done) {
+
+        var xml = internals.readFixture('domain.xml');
+        var result = parser.toJson(xml, { coerce: false });
+        var json = internals.readFixture('domain.json');
+
+        expect(result + '\n').to.deep.equal(json);
+
+        done();
+    });
+
+    it('does large file', function (done) {
+
+        var xml = internals.readFixture('large.xml');
+        var result = parser.toJson(xml, { coerce: false, trim: true, sanitize: false });
+        var json = internals.readFixture('large.json');
+
+        expect(result + '\n').to.deep.equal(json);
+
+        done();
+    });
+
+    it('handles reorder', function (done) {
+
+        var xml = internals.readFixture('reorder.xml');
+        var result = parser.toJson(xml, {});
+        var json = internals.readFixture('reorder.json');
+
+        expect(result).to.deep.equal(json);
+
+        done();
+    });
+
+    it('handles text with space', function (done) {
+
+        var xml = internals.readFixture('spacetext.xml');
+        var result = parser.toJson(xml, { coerce: false, trim: false });
+        var json = internals.readFixture('spacetext.json');
+
+        expect(result).to.deep.equal(json);
+
+        done();
+    });
+
+    it('does xmlsanitize', function (done) {
+
+        var xml = internals.readFixture('xmlsanitize.xml');
+        var result = parser.toJson(xml, {});
+        var json = internals.readFixture('xmlsanitize.json');
+
+        expect(result).to.deep.equal(json);
+
+        done();
+    });
+
+    it('throws error on bad options', function (done) {
+
+        var throws = function() {
+
+            var result = parser.toJson(xml, { derp: true});
+        };
+
+        expect(throws).to.throw();
+        done();
+    });
 });
 
+
+describe('json2xml', function () {
+
+    it('converts domain to json', function (done) {
+
+        var json = internals.readFixture('domain-reversible.json');
+        var result = parser.toXml(json);
+        var xml = internals.readFixture('domain.xml');
+
+        expect(result+'\n').to.deep.equal(xml);
+
+        done();
+    });
+
+});
+
+
+internals.readFixture = function (file) {
+
+    return fs.readFileSync(__dirname + '/fixtures/' + file, { encoding: 'utf-8' });
+};

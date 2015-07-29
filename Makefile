@@ -1,5 +1,5 @@
 test:
-	node test/test.js
+	@node node_modules/.bin/lab -v test/test.js
 
 deps:
 	npm install .
