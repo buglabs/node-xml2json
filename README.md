@@ -85,7 +85,7 @@ var options = {
 ## License
 (The MIT License)
 
-Copyright 2014 BugLabs. All rights reserved.
+Copyright 2015 BugLabs. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
