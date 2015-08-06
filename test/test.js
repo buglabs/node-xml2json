@@ -106,6 +106,50 @@ describe('xml2json', function () {
         expect(throws).to.throw();
         done();
     });
+
+    describe('coercion', function () {
+
+        var file = __dirname + '/fixtures/coerce.xml';
+        var data = fs.readFileSync(file);
+
+        it('works with coercion', function(done) {
+
+            // With coercion
+            var result = parser.toJson(data, {reversible: true, coerce: true, object: true});
+            expect(result.itemRecord.value[0].longValue['$t']).to.equal(12345);
+            expect(result.itemRecord.value[1].stringValue.number).to.equal(false);
+            expect(result.itemRecord.value[2].moneyValue.number).to.equal(true);
+            expect(result.itemRecord.value[2].moneyValue['$t']).to.equal(104.95);
+            expect(result.itemRecord.value[2].moneyValue.text).to.equal(123.45);
+            expect(result.itemRecord.value[8].text['$t']).to.equal(42.42);
+            done();
+        });
+
+        it('works without coercion', function(done) {
+
+            var result = parser.toJson(data, {reversible: true, coerce: false, object: true});
+            expect(result.itemRecord.value[0].longValue['$t']).to.equal('12345');
+            expect(result.itemRecord.value[1].stringValue.number).to.equal('false');
+            expect(result.itemRecord.value[2].moneyValue.number).to.equal('true');
+            expect(result.itemRecord.value[2].moneyValue['$t']).to.equal('104.95');
+            expect(result.itemRecord.value[2].moneyValue.text).to.equal('123.45');
+            expect(result.itemRecord.value[8].text['$t']).to.equal('42.42');
+            done();
+        });
+
+        it('works with coercion as an optional object', function(done) {
+
+            var result = parser.toJson(data, {reversible: true, coerce: {text:String}, object: true});
+            expect(result.itemRecord.value[0].longValue['$t']).to.equal(12345);
+            expect(result.itemRecord.value[1].stringValue.number).to.equal(false);
+            expect(result.itemRecord.value[2].moneyValue.number).to.equal(true);
+            expect(result.itemRecord.value[2].moneyValue['$t']).to.equal(104.95);
+            expect(result.itemRecord.value[2].moneyValue.text).to.equal('123.45');
+            expect(result.itemRecord.value[8].text['$t']).to.equal('42.42');
+            done();
+        });
+    })
+
 });
 
 
@@ -122,6 +166,17 @@ describe('json2xml', function () {
         done();
     });
 
+    it('works with array notation', function (done) {
+
+        var xml = fs.readFileSync('./test/fixtures/array-notation.xml');
+        var expectedJson = JSON.parse( fs.readFileSync('./test/fixtures/array-notation.json') );
+
+        var json = parser.toJson(xml, {object: true, arrayNotation: true});
+
+        expect(json).to.deep.equal(expectedJson);
+
+        done();
+    });
 });
 
 
