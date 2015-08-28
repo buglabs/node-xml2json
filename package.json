@@ -11,7 +11,7 @@
   "dependencies": {
     "hoek": "^2.14.0",
     "joi": "^6.4.3",
-    "node-expat": "^2.3.7"
+    "node-expat": "^2.3.9"
   },
   "bin": {
     "xml2json": "bin/xml2json"
