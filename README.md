@@ -1,5 +1,6 @@
 # Simple XML2JSON Parser
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/buglabs/node-xml2json?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/buglabs/node-xml2json.svg?branch=master)](https://travis-ci.org/buglabs/node-xml2json)
 
 It does not parse the following elements:
 
@@ -41,7 +42,7 @@ Default values:
 var options = {
     object: false,
     reversible: false,
-    coerce: true,
+    coerce: false,
     sanitize: true,
     trim: true,
     arrayNotation: false
