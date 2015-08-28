@@ -10,7 +10,7 @@ var Lab = require('lab');
 // Test shortcuts
 
 // This is a hack for node 0.8.x
-global.setImmediate = global.setImmediate || process.nextTick.bind(process)
+global.setImmediate = global.setImmediate || process.nextTick.bind(process);
 
 var lab = exports.lab = Lab.script();
 var expect = Code.expect;
