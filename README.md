@@ -22,9 +22,20 @@ $ npm install xml2json
 ```javascript
 var parser = require('xml2json');
 
+// xml to json
 var xml = "<foo>bar</foo>";
 var json = parser.toJson(xml); //returns a string containing the JSON structure by default
 console.log(json);
+
+// json to xml
+var json = {
+    root: {
+        name: {'$t': 'John', id:'idx'} // $t for text, and all others will be attributes
+    }
+};
+var xml = parser.toXml(xml); //returns xml  <root><name for="idx">John</name></root> 
+console.log(xml)
+
 ```
 ## API
 
