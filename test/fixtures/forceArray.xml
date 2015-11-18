@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<json>
+	<id>123b</id>
+	<vehicles>
+		<year>1989</year>
+		<annual_mileage>18000</annual_mileage>
+		<average_mileage>30</average_mileage>
+		<alarm>1</alarm>
+		<ownership>Financed</ownership>
+		<make>TOYOTA</make>
+		<model>Camry</model>
+		<commute_days_per_week>5</commute_days_per_week>
+		<collision>$ 500</collision>
+		<comprehensive>$ 500</comprehensive>
+		<primary_purpose>Pleasure</primary_purpose>
+	</vehicles>
+	<vehicles>
+		<year>2006</year>
+		<annual_mileage>37500</annual_mileage>
+		<average_mileage>10</average_mileage>
+		<alarm>1</alarm>
+		<ownership>Owned</ownership>
+		<make>CHRYSLER</make>
+		<model>CROSSFIRE</model>
+		<commute_days_per_week>3</commute_days_per_week>
+		<collision>$ 5000</collision>
+		<comprehensive>$ 500</comprehensive>
+		<primary_purpose>CommuteWork</primary_purpose>
+	</vehicles>
+	<drivers>
+		<driver>Bray Wyatt</driver>
+		<birth_date>1987-05-23</birth_date>
+		<marital_status>Single</marital_status>
+		<relationship>Self</relationship>
+		<gender>Male</gender>
+		<first_licensed>18</first_licensed>
+		<license_status>ValidLicense</license_status>
+		<occupation>Unemployed</occupation>
+		<education>HighSchoolDiploma</education>
+		<credit_rating>Unsure</credit_rating>
+	</drivers>
+</json>

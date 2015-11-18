@@ -96,6 +96,15 @@ describe('xml2json', function () {
         done();
     });
 
+    it('converts with forceArrays', function(done) {
+        var xml = internals.readFixture('forceArray.xml');
+        var result = parser.toJson(xml, {arrayNotation: ['drivers', 'vehicles']});
+        var json = internals.readFixture('forceArray.json');
+
+        expect(result).to.deep.equal(json);
+        done();
+    });
+
     it('throws error on bad options', function (done) {
 
         var throws = function() {
