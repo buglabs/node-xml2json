@@ -33,7 +33,7 @@ var json = {
         name: {'$t': 'John', id:'idx'} // $t for text, and all others will be attributes
     }
 };
-var xml = parser.toXml(xml); //returns xml  <root><name for="idx">John</name></root> 
+var xml = parser.toXml(json); //returns xml  <root><name for="idx">John</name></root> 
 console.log(xml)
 
 ```
