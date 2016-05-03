@@ -88,8 +88,19 @@ describe('xml2json', function () {
     it('does xmlsanitize', function (done) {
 
         var xml = internals.readFixture('xmlsanitize.xml');
-        var result = parser.toJson(xml, {});
+        var result = parser.toJson(xml, {sanitize: true});
         var json = internals.readFixture('xmlsanitize.json');
+
+        expect(result).to.deep.equal(json);
+
+        done();
+    });
+
+    it('does xmlsanitize of text', function (done) {
+
+        var xml = internals.readFixture('xmlsanitize2.xml');
+        var result = parser.toJson(xml, {sanitize: true});
+        var json = internals.readFixture('xmlsanitize2.json');
 
         expect(result).to.deep.equal(json);
 
