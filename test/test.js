@@ -96,6 +96,17 @@ describe('xml2json', function () {
         done();
     });
 
+    it('does xmlsanitize of text', function (done) {
+
+        var xml = internals.readFixture('xmlsanitize2.xml');
+        var result = parser.toJson(xml, {});
+        var json = internals.readFixture('xmlsanitize2.json');
+
+        expect(result).to.deep.equal(json);
+
+        done();
+    });
+
     it('throws error on bad options', function (done) {
 
         var throws = function() {
