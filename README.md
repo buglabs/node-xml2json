@@ -22,21 +22,18 @@ $ npm install xml2json
 ```javascript
 var parser = require('xml2json');
 
+var xml = "<foo attr=\"value\">bar</foo>";
+console.log("input -> %s", xml)
+
 // xml to json
-var xml = "<foo>bar</foo>";
-var json = parser.toJson(xml); //returns a string containing the JSON structure by default
-console.log(json);
+var json = parser.toJson(xml);
+console.log("to json -> %s", json);
 
 // json to xml
-var json = {
-    root: {
-        name: {'$t': 'John', id:'idx'} // $t for text, and all others will be attributes
-    }
-};
-var xml = parser.toXml(json); //returns xml  <root><name for="idx">John</name></root> 
-console.log(xml)
-
+var xml = parser.toXml(json);
+console.log("back to xml -> %s", xml)
 ```
+
 ## API
 
 ```javascript
@@ -97,7 +94,7 @@ var options = {
 ## License
 (The MIT License)
 
-Copyright 2015 BugLabs. All rights reserved.
+Copyright (c) 2016 xml2json AUTHORS 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
