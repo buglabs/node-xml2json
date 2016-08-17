@@ -25,7 +25,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, { arrayNotation: true });
         var json = internals.readFixture('array-notation.json');
 
-        expect(result).to.deep.equal(json);
+        expect(result).to.equal(json);
 
         done();
     });
@@ -36,7 +36,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, { coerce: false });
         var json = internals.readFixture('coerce.json');
 
-        expect(result + '\n').to.deep.equal(json);
+        expect(result + '\n').to.equal(json);
 
         done();
     });
@@ -47,7 +47,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, { coerce: false });
         var json = internals.readFixture('domain.json');
 
-        expect(result + '\n').to.deep.equal(json);
+        expect(result + '\n').to.equal(json);
 
         done();
     });
@@ -58,7 +58,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, { coerce: false, trim: true, sanitize: false });
         var json = internals.readFixture('large.json');
 
-        expect(result + '\n').to.deep.equal(json);
+        expect(result + '\n').to.equal(json);
 
         done();
     });
@@ -69,7 +69,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, {});
         var json = internals.readFixture('reorder.json');
 
-        expect(result).to.deep.equal(json);
+        expect(result).to.equal(json);
 
         done();
     });
@@ -80,7 +80,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, { coerce: false, trim: false });
         var json = internals.readFixture('spacetext.json');
 
-        expect(result).to.deep.equal(json);
+        expect(result).to.equal(json);
 
         done();
     });
@@ -91,7 +91,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, {sanitize: true});
         var json = internals.readFixture('xmlsanitize.json');
 
-        expect(result).to.deep.equal(json);
+        expect(result).to.equal(json);
 
         done();
     });
@@ -102,7 +102,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, {sanitize: true});
         var json = internals.readFixture('xmlsanitize2.json');
 
-        expect(result).to.deep.equal(json);
+        expect(result).to.equal(json);
 
         done();
     });
@@ -172,7 +172,7 @@ describe('json2xml', function () {
         var result = parser.toXml(json);
         var xml = internals.readFixture('domain.xml');
 
-        expect(result+'\n').to.deep.equal(xml);
+        expect(result+'\n').to.equal(xml);
 
         done();
     });
@@ -184,7 +184,7 @@ describe('json2xml', function () {
 
         var json = parser.toJson(xml, {object: true, arrayNotation: true});
 
-        expect(json).to.deep.equal(expectedJson);
+        expect(json).to.equal(expectedJson);
 
         done();
     });
