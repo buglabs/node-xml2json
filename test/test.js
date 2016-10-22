@@ -99,10 +99,32 @@ describe('xml2json', function () {
     it('does xmlsanitize of text', function (done) {
 
         var xml = internals.readFixture('xmlsanitize2.xml');
-        var result = parser.toJson(xml, {sanitize: true});
+        var result = parser.toJson(xml, {sanitize: true, reversible: true});
         var json = internals.readFixture('xmlsanitize2.json');
 
         expect(result).to.equal(json);
+
+        done();
+    });
+
+    it('does json unsanitize', function (done) {
+
+        var json = internals.readFixture('xmlsanitize.json');
+        var result = parser.toXml(json, {sanitize: true});
+        var xml = internals.readFixture('xmlsanitize.xml');
+
+        expect(result).to.equal(xml);
+
+        done();
+    });
+
+    it('does json unsanitize of text', function (done) {
+
+        var json = internals.readFixture('xmlsanitize2.json');
+        var result = parser.toXml(json, {sanitize: true});
+        var xml = internals.readFixture('xmlsanitize2.xml');
+
+        expect(result).to.equal(xml);
 
         done();
     });
