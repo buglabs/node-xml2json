@@ -179,8 +179,8 @@ describe('json2xml', function () {
 
     it('works with array notation', function (done) {
 
-        var xml = fs.readFileSync('./test/fixtures/array-notation.xml');
-        var expectedJson = JSON.parse( fs.readFileSync('./test/fixtures/array-notation.json') );
+        var xml = internals.readFixture('array-notation.xml');
+        var expectedJson = JSON.parse( internals.readFixture('array-notation.json') );
 
         var json = parser.toJson(xml, {object: true, arrayNotation: true});
 
