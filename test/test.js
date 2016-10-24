@@ -129,6 +129,28 @@ describe('xml2json', function () {
         done();
     });
 
+    it('does doesnt double sanitize', function (done) {
+
+        var json = internals.readFixture('xmlsanitize3.json');
+        var result = parser.toXml(json, {sanitize: true});
+        var xml = internals.readFixture('xmlsanitize3.xml');
+
+        expect(result).to.equal(xml);
+
+        done();
+    });
+
+    it('does doesnt double unsanitize', function (done) {
+
+        var xml = internals.readFixture('xmlsanitize3.xml');
+        var result = parser.toJson(xml, {sanitize: true, reversible: true});
+        var json = internals.readFixture('xmlsanitize3.json');
+
+        expect(result).to.equal(json);
+
+        done();
+    });
+
     it('throws error on bad options', function (done) {
 
         var throws = function() {
