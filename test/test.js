@@ -176,7 +176,7 @@ describe('xml2json', function () {
         var data = fs.readFileSync(file);
         it('A: defaults without the option being defined', function(done) {
 
-            var result = parser.toJson(data, {reversible: true});
+            var result = parser.toJson(data, {reversible: true, object: true});
             expect(result.unit.tst.case[0].justText['$t']).to.equal('blah blah');
             expect(result.unit.tst.case[1].attribText['$t']).to.equal('capital');
         });
