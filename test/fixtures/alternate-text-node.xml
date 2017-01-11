@@ -1,5 +1,5 @@
 <unit>
-  <tst>
+  <test>
     <case>
       <justText>blah blah</justText>
     </case>
@@ -17,6 +17,6 @@ asdf
         Alpha &amp; Omega
       </san>
     </case>
-  </tst>
+  </test>
 </unit>
 
