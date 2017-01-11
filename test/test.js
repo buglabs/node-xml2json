@@ -175,7 +175,7 @@ describe('xml2json', function () {
         it('A1: defaults without the option being defined', function(done) {
 
             var xml = internals.readFixture('alternate-text-node-A.xml');
-            var result = parser.toJson(xml, {});
+            var result = parser.toJson(xml, {object: true});
             var json = internals.readFixture('alternate-text-node-A.json');
             
             expect(result).to.equal(json);
