@@ -170,6 +170,51 @@ describe('xml2json', function () {
         });
     })
 
+    describe('alternateTextNode', function () {
+
+        var file = __dirname + '/fixtures/alternate-text-node.xml';
+        var data = fs.readFileSync(file);
+        it('A: defaults without the option being defined', function(done) {
+
+            var result = parser.toJson(data, {reversible: true});
+            expect(result.unit.test.case[0].justText['$t']).to.equal('blah blah');
+            expect(result.unit.test.case[1].attribText['$t']).to.equal('capital');
+        });
+
+        it('B: defaults with option as false', function(done) {
+
+            var result = parser.toJson(data, {alternateTextNode: false, reversible: true});
+            expect(result.unit.test.case[0].justText['$t']).to.equal('blah blah');
+            expect(result.unit.test.case[1].attribText['$t']).to.equal('capital');
+        });
+
+        
+        it('C: uses alternate text node with option as true', function(done) {
+
+            var result = parser.toJson(data, {alternateTextNode: true, reversible: true});
+            expect(result.unit.test.case[0].justText['_t']).to.equal('blah blah');
+            expect(result.unit.test.case[1].attribText['_t']).to.equal('capital');
+        });
+        
+        it('D: overrides text node with option as "xx" string', function(done) {
+
+            var result = parser.toJson(data, {alternateTextNode: "xx", reversible: true});
+            expect(result.unit.test.case[0].justText['xx']).to.equal('blah blah');
+            expect(result.unit.test.case[1].attribText['xx']).to.equal('capital');
+        });
+
+        it('E: double check sanatize and trim', function (done) {
+
+            var xml = internals.readFixture('alternate-text-node.xml');
+            var result = parser.toJson(xml, {alternateTextNode: "zz",  reversible: true, sanitize: true, trim: true});
+            var json = internals.readFixture('alternate-text-node.json');
+
+            expect(result).to.equal(json);
+
+            done();
+        });
+
+    })
 });
 
 
