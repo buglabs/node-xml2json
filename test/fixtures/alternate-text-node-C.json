@@ -1,1 +1,1 @@
-{"unit":{"test":{"case":[{"justText":{"xx":"blah blah"}},{"attribText":{"attrib":"das","xx":"capital"}},{"spaces":{"xx":"abc\nasdf\n  a"}},{"type":"SANATISE","san":{"b":"Smith & Son","xx":"Alpha & Omega"}}]}}}
+{"unit":{"test":{"case":[{"justText":{"xx":"blah blah"}},{"attribText":{"attrib":"das","xx":"capital"}}]}}}

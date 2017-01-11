@@ -174,8 +174,8 @@ describe('xml2json', function () {
 
         it('A1: defaults without the option being defined', function(done) {
 
-            var xml = internals.readFixture('alternate-text-node.xml');
-            var result = parser.toJson(data, {});
+            var xml = internals.readFixture('alternate-text-node-A.xml');
+            var result = parser.toJson(xml, {});
             var json = internals.readFixture('alternate-text-node-A.json');
             
             expect(result).to.equal(json);
@@ -185,8 +185,8 @@ describe('xml2json', function () {
 
         it('A2: defaults with option as false', function(done) {
 
-            var xml = internals.readFixture('alternate-text-node.xml');
-            var result = parser.toJson(data, {alternateTextNode: false});
+            var xml = internals.readFixture('alternate-text-node-A.xml');
+            var result = parser.toJson(xml, {alternateTextNode: false});
             var json = internals.readFixture('alternate-text-node-A.json');
             
             expect(result).to.equal(json);
@@ -197,8 +197,8 @@ describe('xml2json', function () {
         
         it('B: uses alternate text node with option as true', function(done) {
 
-            var xml = internals.readFixture('alternate-text-node.xml');
-            var result = parser.toJson(data, {alternateTextNode: true});
+            var xml = internals.readFixture('alternate-text-node-A.xml');
+            var result = parser.toJson(xml, {alternateTextNode: true});
             var json = internals.readFixture('alternate-text-node-B.json');
 
             expect(result).to.equal(json);
@@ -208,14 +208,14 @@ describe('xml2json', function () {
         
         it('C: overrides text node with option as "xx" string', function(done) {
 
-            var xml = internals.readFixture('alternate-text-node.xml');
-            var result = parser.toJson(data, {alternateTextNode: "xx"});
+            var xml = internals.readFixture('alternate-text-node-A.xml');
+            var result = parser.toJson(xml, {alternateTextNode: "xx"});
             var json = internals.readFixture('alternate-text-node-C.json');
         });
 
         it('D: double check sanatize and trim', function (done) {
 
-            var xml = internals.readFixture('alternate-text-node.xml');
+            var xml = internals.readFixture('alternate-text-node-D.xml');
             var result = parser.toJson(xml, {alternateTextNode: "zz", sanitize: true, trim: true});
             var json = internals.readFixture('alternate-text-node-D.json');
 
