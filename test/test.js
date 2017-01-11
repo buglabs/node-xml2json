@@ -177,8 +177,8 @@ describe('xml2json', function () {
         it('A: defaults without the option being defined', function(done) {
 
             var result = parser.toJson(data, {reversible: true});
-            expect(result.unit.test.case[0].justText['$t']).to.equal('blah blah');
-            expect(result.unit.test.case[1].attribText['$t']).to.equal('capital');
+            expect(result.unit.tst.case[0].justText['$t']).to.equal('blah blah');
+            expect(result.unit.tst.case[1].attribText['$t']).to.equal('capital');
         });
 
         it('B: defaults with option as false', function(done) {
