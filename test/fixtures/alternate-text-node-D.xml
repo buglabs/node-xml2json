@@ -1,0 +1,22 @@
+<unit>
+  <test>
+    <case>
+      <justText>blah blah</justText>
+    </case>
+    <case>
+      <attribText attrib='das'>capital
+      </attribText>
+    </case>
+    <case> 
+      <spaces>  abc
+asdf
+  a  </spaces>
+    </case>
+    <case type="SANATISE">
+      <san b="Smith &amp; Son">
+        Alpha &amp; Omega
+      </san>
+    </case>
+  </test>
+</unit>
+
