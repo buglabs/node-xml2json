@@ -112,7 +112,7 @@ describe('xml2json', function () {
         var result = parser.toJson(xml, {arrayNotation: ['drivers', 'vehicles']});
         var json = internals.readFixture('forceArray.json');
 
-        expect(result).to.deep.equal(json);
+        expect(result).to.equal(json);
         done();
     });
 
