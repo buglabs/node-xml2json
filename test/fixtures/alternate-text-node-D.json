@@ -1,0 +1,1 @@
+{"unit":{"test":{"case":[{"justText":{"zz":"blah blah"}},{"attribText":{"attrib":"das","zz":"capital"}},{"spaces":{"zz":"abc\nasdf\n  a"}},{"type":"SANATISE","san":{"b":"Smith & Son","zz":"Alpha & Omega"}}]}}}

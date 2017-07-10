@@ -1,0 +1,11 @@
+<unit>
+  <test>
+    <case>
+      <justText>blah blah</justText>
+    </case>
+    <case>
+      <attribText attrib='das'>capital
+      </attribText>
+    </case>
+  </test>
+</unit>

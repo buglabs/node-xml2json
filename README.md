@@ -54,6 +54,7 @@ var options = {
     sanitize: true,
     trim: true,
     arrayNotation: false
+    alternateTextNode: false
 };
 ```
 
@@ -61,7 +62,7 @@ var options = {
 * **reversible:** Makes the JSON reversible to XML (*)
 * **coerce:** Makes type coercion. i.e.: numbers and booleans present in attributes and element values are converted from string to its correspondent data types. Coerce can be optionally defined as an object with specific methods of coercion based on attribute name or tag name, with fallback to default coercion.
 * **trim:** Removes leading and trailing whitespaces as well as line terminators in element values.
-* **arrayNotation:** XML child nodes are always treated as arrays
+* **arrayNotation:** XML child nodes are always treated as arrays NB: you can specify a selective array of nodes for this to apply to instead of the whole document. 
 * **sanitize:** Sanitizes the following characters present in element values:
 
 ```javascript
@@ -76,6 +77,8 @@ var chars =  {
     "'": '&apos;'
 };
 ```
+* **alternateTextNode:** Changes the default textNode property from $t to _t when option is set to true. Alternatively a string can be specified which will override $t to what ever the string is.
+
 
 ### Options object for `toXml`
 
