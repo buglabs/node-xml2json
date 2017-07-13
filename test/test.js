@@ -147,6 +147,7 @@ describe('xml2json', function () {
         var json = internals.readFixture('xmlsanitize3.json');
 
         expect(result).to.equal(json);
+        done();
     });
 
     it('converts with forceArrays', function(done) {
