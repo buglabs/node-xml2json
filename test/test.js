@@ -99,11 +99,54 @@ describe('xml2json', function () {
     it('does xmlsanitize of text', function (done) {
 
         var xml = internals.readFixture('xmlsanitize2.xml');
-        var result = parser.toJson(xml, {sanitize: true});
+        var result = parser.toJson(xml, {sanitize: true, reversible: true});
         var json = internals.readFixture('xmlsanitize2.json');
 
         expect(result).to.equal(json);
 
+        done();
+    });
+
+    it('does json unsanitize', function (done) {
+
+        var json = internals.readFixture('xmlsanitize.json');
+        var result = parser.toXml(json, {sanitize: true});
+        var xml = internals.readFixture('xmlsanitize.xml');
+
+        expect(result).to.equal(xml);
+
+        done();
+    });
+
+    it('does json unsanitize of text', function (done) {
+
+        var json = internals.readFixture('xmlsanitize2.json');
+        var result = parser.toXml(json, {sanitize: true});
+        var xml = internals.readFixture('xmlsanitize2.xml');
+
+        expect(result).to.equal(xml);
+
+        done();
+    });
+
+    it('does doesnt double sanitize', function (done) {
+
+        var json = internals.readFixture('xmlsanitize3.json');
+        var result = parser.toXml(json, {sanitize: true});
+        var xml = internals.readFixture('xmlsanitize3.xml');
+
+        expect(result).to.equal(xml);
+
+        done();
+    });
+
+    it('does doesnt double unsanitize', function (done) {
+
+        var xml = internals.readFixture('xmlsanitize3.xml');
+        var result = parser.toJson(xml, {sanitize: true, reversible: true});
+        var json = internals.readFixture('xmlsanitize3.json');
+
+        expect(result).to.equal(json);
         done();
     });
 
@@ -247,8 +290,8 @@ describe('json2xml', function () {
 
     it('works with array notation', function (done) {
 
-        var xml = fs.readFileSync('./test/fixtures/array-notation.xml');
-        var expectedJson = JSON.parse( fs.readFileSync('./test/fixtures/array-notation.json') );
+        var xml = internals.readFixture('array-notation.xml');
+        var expectedJson = JSON.parse( internals.readFixture('array-notation.json') );
 
         var json = parser.toJson(xml, {object: true, arrayNotation: true});
 
