@@ -1,6 +1,6 @@
 {
   "name": "xml2json",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Converts xml to json and vice-versa, using node-expat.",
   "repository": "git://github.com/buglabs/node-xml2json.git",
   "license": "MIT",
