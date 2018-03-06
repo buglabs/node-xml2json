@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "hoek": "^4.0.1",
-    "joi": "^9.0.4",
+    "joi": "^10.0.0",
     "node-expat": "^2.3.15"
   },
   "bin": {
