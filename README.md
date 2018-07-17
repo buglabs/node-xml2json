@@ -85,11 +85,13 @@ var chars =  {
 Default values:
 ```javascript
 var options = {
-    sanitize: false
+    sanitize: false,
+    ignoreNull: false
 };
 ```
 
-`sanitize: false` is the default option to behave like previous versions
+* `sanitize: false` is the default option to behave like previous versions
+* **ignoreNull:** Ignores all null values
 
 
 (*) xml2json tranforms CDATA content to JSON, but it doesn't generate a reversible structure.
