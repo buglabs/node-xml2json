@@ -220,7 +220,7 @@ describe('xml2json', function () {
             var xml = internals.readFixture('alternate-text-node-A.xml');
             var result = parser.toJson(xml, {reversible: true});
             var json = internals.readFixture('alternate-text-node-A.json');
-            
+
             expect(result).to.equal(json);
 
             done();
@@ -231,13 +231,13 @@ describe('xml2json', function () {
             var xml = internals.readFixture('alternate-text-node-A.xml');
             var result = parser.toJson(xml, {alternateTextNode: false, reversible: true});
             var json = internals.readFixture('alternate-text-node-A.json');
-            
+
             expect(result).to.equal(json);
 
             done();
         });
 
-        
+
         it('B: uses alternate text node with option as true', function(done) {
 
             var xml = internals.readFixture('alternate-text-node-A.xml');
@@ -248,13 +248,13 @@ describe('xml2json', function () {
 
             done();
         });
-        
+
         it('C: overrides text node with option as "xx" string', function(done) {
 
             var xml = internals.readFixture('alternate-text-node-A.xml');
             var result = parser.toJson(xml, {alternateTextNode: "xx", reversible: true});
             var json = internals.readFixture('alternate-text-node-C.json');
-            
+
             expect(result).to.equal(json);
 
             done();
@@ -298,6 +298,32 @@ describe('json2xml', function () {
         expect(json).to.equal(expectedJson);
 
         done();
+    });
+
+    describe('ignore null', function () {
+
+        it('ignore null properties {ignoreNull: true}', function (done) {
+
+            var json = JSON.parse( internals.readFixture('null-properties.json') );
+            var expectedXml = internals.readFixture('null-properties-ignored.xml');
+
+            var xml = parser.toXml(json, {ignoreNull: true});
+            expect(xml).to.equal(expectedXml);
+
+            done();
+        });
+
+        it('don\'t ignore null properties (default)', function (done) {
+
+            var json = JSON.parse( internals.readFixture('null-properties.json') );
+            var expectedXml = internals.readFixture('null-properties-not-ignored.xml');
+
+            var xml = parser.toXml(json);
+            expect(xml).to.equal(expectedXml);
+
+            done();
+        });
+
     });
 });
 
