@@ -19,7 +19,7 @@ var internals = {};
 
 describe('xml2json', function () {
 
-    it('converts with array-notation', function (done) {
+    it('converts with array-notation', function () {
 
         var xml = internals.readFixture('array-notation.xml');
         var result = parser.toJson(xml, { arrayNotation: true });
@@ -27,10 +27,10 @@ describe('xml2json', function () {
 
         expect(result).to.equal(json);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('coerces', function (done) {
+    it('coerces', function () {
 
         var xml = internals.readFixture('coerce.xml');
         var result = parser.toJson(xml, { coerce: false });
@@ -38,10 +38,10 @@ describe('xml2json', function () {
 
         expect(result + '\n').to.equal(json);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('handles domain', function (done) {
+    it('handles domain', function () {
 
         var xml = internals.readFixture('domain.xml');
         var result = parser.toJson(xml, { coerce: false });
@@ -49,10 +49,10 @@ describe('xml2json', function () {
 
         expect(result + '\n').to.equal(json);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('does large file', function (done) {
+    it('does large file', function () {
 
         var xml = internals.readFixture('large.xml');
         var result = parser.toJson(xml, { coerce: false, trim: true, sanitize: false });
@@ -60,10 +60,10 @@ describe('xml2json', function () {
 
         expect(result + '\n').to.equal(json);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('handles reorder', function (done) {
+    it('handles reorder', function () {
 
         var xml = internals.readFixture('reorder.xml');
         var result = parser.toJson(xml, {});
@@ -71,10 +71,10 @@ describe('xml2json', function () {
 
         expect(result).to.equal(json);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('handles text with space', function (done) {
+    it('handles text with space', function () {
 
         var xml = internals.readFixture('spacetext.xml');
         var result = parser.toJson(xml, { coerce: false, trim: false });
@@ -82,10 +82,10 @@ describe('xml2json', function () {
 
         expect(result).to.equal(json);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('does xmlsanitize', function (done) {
+    it('does xmlsanitize', function () {
 
         var xml = internals.readFixture('xmlsanitize.xml');
         var result = parser.toJson(xml, {sanitize: true});
@@ -93,10 +93,10 @@ describe('xml2json', function () {
 
         expect(result).to.equal(json);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('does xmlsanitize of text', function (done) {
+    it('does xmlsanitize of text', function () {
 
         var xml = internals.readFixture('xmlsanitize2.xml');
         var result = parser.toJson(xml, {sanitize: true, reversible: true});
@@ -104,10 +104,10 @@ describe('xml2json', function () {
 
         expect(result).to.equal(json);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('does json unsanitize', function (done) {
+    it('does json unsanitize', function () {
 
         var json = internals.readFixture('xmlsanitize.json');
         var result = parser.toXml(json, {sanitize: true});
@@ -115,10 +115,10 @@ describe('xml2json', function () {
 
         expect(result).to.equal(xml);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('does json unsanitize of text', function (done) {
+    it('does json unsanitize of text', function () {
 
         var json = internals.readFixture('xmlsanitize2.json');
         var result = parser.toXml(json, {sanitize: true});
@@ -126,10 +126,10 @@ describe('xml2json', function () {
 
         expect(result).to.equal(xml);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('does doesnt double sanitize', function (done) {
+    it('does doesnt double sanitize', function () {
 
         var json = internals.readFixture('xmlsanitize3.json');
         var result = parser.toXml(json, {sanitize: true});
@@ -137,29 +137,29 @@ describe('xml2json', function () {
 
         expect(result).to.equal(xml);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('does doesnt double unsanitize', function (done) {
+    it('does doesnt double unsanitize', function () {
 
         var xml = internals.readFixture('xmlsanitize3.xml');
         var result = parser.toJson(xml, {sanitize: true, reversible: true});
         var json = internals.readFixture('xmlsanitize3.json');
 
         expect(result).to.equal(json);
-        done();
+        return Promise.resolve();
     });
 
-    it('converts with forceArrays', function(done) {
+    it('converts with forceArrays', function() {
         var xml = internals.readFixture('forceArray.xml');
         var result = parser.toJson(xml, {arrayNotation: ['drivers', 'vehicles']});
         var json = internals.readFixture('forceArray.json');
 
         expect(result).to.equal(json);
-        done();
+        return Promise.resolve();
     });
 
-    it('throws error on bad options', function (done) {
+    it('throws error on bad options', function () {
 
         var throws = function() {
 
@@ -167,7 +167,7 @@ describe('xml2json', function () {
         };
 
         expect(throws).to.throw();
-        done();
+        return Promise.resolve();
     });
 
     describe('coercion', function () {
@@ -175,7 +175,7 @@ describe('xml2json', function () {
         var file = __dirname + '/fixtures/coerce.xml';
         var data = fs.readFileSync(file);
 
-        it('works with coercion', function(done) {
+        it('works with coercion', function() {
 
             // With coercion
             var result = parser.toJson(data, {reversible: true, coerce: true, object: true});
@@ -185,10 +185,10 @@ describe('xml2json', function () {
             expect(result.itemRecord.value[2].moneyValue['$t']).to.equal(104.95);
             expect(result.itemRecord.value[2].moneyValue.text).to.equal(123.45);
             expect(result.itemRecord.value[8].text['$t']).to.equal(42.42);
-            done();
+            return Promise.resolve();
         });
 
-        it('works without coercion', function(done) {
+        it('works without coercion', function() {
 
             var result = parser.toJson(data, {reversible: true, coerce: false, object: true});
             expect(result.itemRecord.value[0].longValue['$t']).to.equal('12345');
@@ -197,10 +197,10 @@ describe('xml2json', function () {
             expect(result.itemRecord.value[2].moneyValue['$t']).to.equal('104.95');
             expect(result.itemRecord.value[2].moneyValue.text).to.equal('123.45');
             expect(result.itemRecord.value[8].text['$t']).to.equal('42.42');
-            done();
+            return Promise.resolve();
         });
 
-        it('works with coercion as an optional object', function(done) {
+        it('works with coercion as an optional object', function() {
 
             var result = parser.toJson(data, {reversible: true, coerce: {text:String}, object: true});
             expect(result.itemRecord.value[0].longValue['$t']).to.equal(12345);
@@ -209,13 +209,13 @@ describe('xml2json', function () {
             expect(result.itemRecord.value[2].moneyValue['$t']).to.equal(104.95);
             expect(result.itemRecord.value[2].moneyValue.text).to.equal('123.45');
             expect(result.itemRecord.value[8].text['$t']).to.equal('42.42');
-            done();
+            return Promise.resolve();
         });
     })
 
     describe('alternateTextNode', function () {
 
-        it('A1: defaults without the option being defined', function(done) {
+        it('A1: defaults without the option being defined', function() {
 
             var xml = internals.readFixture('alternate-text-node-A.xml');
             var result = parser.toJson(xml, {reversible: true});
@@ -223,10 +223,10 @@ describe('xml2json', function () {
 
             expect(result).to.equal(json);
 
-            done();
+            return Promise.resolve();
         });
 
-        it('A2: defaults with option as false', function(done) {
+        it('A2: defaults with option as false', function() {
 
             var xml = internals.readFixture('alternate-text-node-A.xml');
             var result = parser.toJson(xml, {alternateTextNode: false, reversible: true});
@@ -234,11 +234,11 @@ describe('xml2json', function () {
 
             expect(result).to.equal(json);
 
-            done();
+            return Promise.resolve();
         });
 
 
-        it('B: uses alternate text node with option as true', function(done) {
+        it('B: uses alternate text node with option as true', function() {
 
             var xml = internals.readFixture('alternate-text-node-A.xml');
             var result = parser.toJson(xml, {alternateTextNode: true, reversible: true});
@@ -246,10 +246,10 @@ describe('xml2json', function () {
 
             expect(result).to.equal(json);
 
-            done();
+            return Promise.resolve();
         });
 
-        it('C: overrides text node with option as "xx" string', function(done) {
+        it('C: overrides text node with option as "xx" string', function() {
 
             var xml = internals.readFixture('alternate-text-node-A.xml');
             var result = parser.toJson(xml, {alternateTextNode: "xx", reversible: true});
@@ -257,10 +257,10 @@ describe('xml2json', function () {
 
             expect(result).to.equal(json);
 
-            done();
+            return Promise.resolve();
         });
 
-        it('D: double check sanatize and trim', function (done) {
+        it('D: double check sanatize and trim', function () {
 
             var xml = internals.readFixture('alternate-text-node-D.xml');
             var result = parser.toJson(xml, {alternateTextNode: "zz", sanitize: true, trim: true, reversible: true});
@@ -268,7 +268,7 @@ describe('xml2json', function () {
 
             expect(result).to.equal(json);
 
-            done();
+            return Promise.resolve();
         });
 
     })
@@ -277,7 +277,7 @@ describe('xml2json', function () {
 
 describe('json2xml', function () {
 
-    it('converts domain to json', function (done) {
+    it('converts domain to json', function () {
 
         var json = internals.readFixture('domain-reversible.json');
         var result = parser.toXml(json);
@@ -285,10 +285,10 @@ describe('json2xml', function () {
 
         expect(result+'\n').to.equal(xml);
 
-        done();
+        return Promise.resolve();
     });
 
-    it('works with array notation', function (done) {
+    it('works with array notation', function () {
 
         var xml = internals.readFixture('array-notation.xml');
         var expectedJson = JSON.parse( internals.readFixture('array-notation.json') );
@@ -297,12 +297,12 @@ describe('json2xml', function () {
 
         expect(json).to.equal(expectedJson);
 
-        done();
+        return Promise.resolve();
     });
 
     describe('ignore null', function () {
 
-        it('ignore null properties {ignoreNull: true}', function (done) {
+        it('ignore null properties {ignoreNull: true}', function () {
 
             var json = JSON.parse( internals.readFixture('null-properties.json') );
             var expectedXml = internals.readFixture('null-properties-ignored.xml');
@@ -310,10 +310,10 @@ describe('json2xml', function () {
             var xml = parser.toXml(json, {ignoreNull: true});
             expect(xml).to.equal(expectedXml);
 
-            done();
+            return Promise.resolve();
         });
 
-        it('don\'t ignore null properties (default)', function (done) {
+        it('don\'t ignore null properties (default)', function () {
 
             var json = JSON.parse( internals.readFixture('null-properties.json') );
             var expectedXml = internals.readFixture('null-properties-not-ignored.xml');
@@ -321,7 +321,7 @@ describe('json2xml', function () {
             var xml = parser.toXml(json);
             expect(xml).to.equal(expectedXml);
 
-            done();
+            return Promise.resolve();
         });
 
     });
